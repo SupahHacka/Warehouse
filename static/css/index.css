@@ -1,0 +1,23 @@
+html{
+  height:100%;
+  width:100%;
+}
+
+body{
+  height:100%;
+  width:100%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.headerBio{
+  background-color: #f2f2f2;
+  height:25%;
+  text-align:center;
+  padding-top:6%;
+  font-size: 200%;
+  box-shadow: 10px 10px 5px grey;
+}
+
+#header{
+  color:black;
+}
