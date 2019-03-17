@@ -1,4 +1,10 @@
 from flask import Flask, render_template
+from flaskext.mysql import MySQL
+
+mysql = MySQL()
+mysql.init_app(app)
+
+from backend import cms
 
 app = Flask(__name__,
             static_folder = "./static",
