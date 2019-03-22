@@ -38,3 +38,22 @@ $(document).ready(function(){
   }
   
 });
+
+function login(){
+    if($('#logUsername').val() != '' && $('#logPass').val() != ''){
+      $.ajax({
+        data : $('#logFrm').serialize(),
+        type : 'POST',
+        url : '/login',
+        success : function(response){
+          console.log(response);
+        },
+        error: function(error){
+          console.log(error);
+        }
+      });
+    }else{
+      alert('Please fill up the form');
+    }
+    return false;
+}

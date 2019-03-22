@@ -34,16 +34,37 @@
 
   <body>
 
-     <div class='container-fluid headerBio'>
+     <div class='container-fluid' style = 'height:17%;'>
 
-       <div class = 'row'>
-         <div class = 'col-md-4'>
-           <h2>Hi I'm Inno</h2>
-         </div>
+       <div class = 'row header-row headerBio'>
+
+         <div class = 'col-md-4'></div>
          <div class = 'col-md-2'></div>
          <div class = 'col-md-6'>
            <div id = 'header'></div>
          </div>
+
+       </div>
+
+       <div class = 'row'>
+         
+        <div class = 'col-md-4'></div>
+        <div class = 'col-md-4 logDiv'>
+          
+          <form class = 'form-group' id = 'logFrm'>
+           
+            <label>Username: </label><br>
+              <input type = 'text' id = 'logUsername' name = 'logUsername' class = 'form-control'><br>
+            <label>Password: </label><br>
+              <input type = 'password' id = 'logPass' name = 'logPass' class = 'form-control'><br>
+
+              <button class = 'btn btn-success' onclick = 'return login();'>Submit</button>
+
+         </form>
+
+        </div>
+        <div class = 'col-md-4'></div>
+
        </div>
 
      </div>

@@ -11,13 +11,21 @@ body{
 
 .headerBio{
   background-color: #f2f2f2;
-  height:25%;
   text-align:center;
-  padding-top:6%;
+  padding-top:5%;
   font-size: 200%;
   box-shadow: 10px 10px 5px grey;
 }
 
 #header{
   color:black;
+}
+
+.header-row{
+  margin-bottom:2%;
+  height:100%;
+}
+
+.logDiv{
+  padding:2%;
 }
