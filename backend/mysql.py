@@ -11,14 +11,10 @@ class dataBase:
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
     db.init_app(app)
 
-class cms(dataBase):
-  def __init__(self,app):
-    super().__init__(app)
-
-  def select(self,query):
+  def select(self, queryStr):
     conn = db.connect()
     cursor = conn.cursor()
-    cursor.execute(query)
+    cursor.execute(queryStr)
 
     data = cursor.fetchall()
 

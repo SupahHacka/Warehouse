@@ -25,9 +25,15 @@
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 
     <!-- Custom CSS files-->
+
+    <link rel='stylesheet' href="{{ url_for('static', filename = 'css/style.css') }}">
+
     <link rel='stylesheet' href="{{ url_for('static', filename = 'css/index.css') }}">
 
     <!-- Custom Js files -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
   </head>
@@ -55,12 +61,13 @@
            
             <label>Username: </label><br>
               <input type = 'text' id = 'logUsername' name = 'logUsername' class = 'form-control'><br>
+              
             <label>Password: </label><br>
               <input type = 'password' id = 'logPass' name = 'logPass' class = 'form-control'><br>
 
-              <button class = 'btn btn-success' onclick = 'return login();'>Submit</button>
+            <button class = 'btn btn-success' onclick = 'return login();'>Submit</button>
 
-         </form>
+          </form>
 
         </div>
         <div class = 'col-md-4'></div>
