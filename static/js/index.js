@@ -57,3 +57,25 @@ function login(){
   }
   return false;
 }
+
+function register(){
+  $('#regFrmErr').text('');
+  if(checkEmpty($('#registerFrm').serialize())){
+
+    if(clarifyPass($('#regPassword').val(),'regPassword',$('#regPasswordClar').val(),'regPasswordClar')){
+
+      if(checkEmail($('#regEmail').val(),'regEmail')){
+        
+        
+
+      }else{
+        $('#regFrmErr').text('Please input a valid email, ex. example@.domain');
+      }
+    }else{
+      $('#regFrmErr').text('Please make sure the passwords match');  
+    }
+  }else{
+    $('#regFrmErr').text('Please fill up the highlighted fields');
+  }
+  return false;
+}

@@ -13,7 +13,7 @@ def index():
 
 @app.route('/cms')
 def content():
-  res = db.select('SELECT cms_txt FROM cms_tbl')
+  res = db.query('SELECT cms_txt FROM cms_tbl')
   return jsonify(res)
 
 @app.route('/login', methods=['POST'])

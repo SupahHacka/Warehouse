@@ -3,25 +3,19 @@ $(document).ready(function(){
 });
 
 /****
-*
-*Function requires an element(s)'s name to be identical to its ID
-*Function checks if form is empty
-*
+**
+**Function requires an element(s)'s name to be identical to its ID
+**Function checks if form is empty
+**
 ****/
 function checkEmpty(x){
-  //Separate fields by &, field ex. formFieldName=Value&formFieldName=value
   var y = x.split('&');
   var handler = [];
   l = y.length;
 
-  //Verify  each field if empty
   for(i = 0; i < l; i++){
-    //split value by = , ex. formFieldName = value
     var z = y[i].split('=');
 
-    //Iterate every instance of each field and check value if empty
-    //if  empty .errorInput is assigned to field by id
-    //if empty, false value is pushed to array handler to serve as flag
     if(z[1] === ''){
       $('#' + z[0]).addClass('errorInput');
       handler.push(false);
@@ -30,11 +24,44 @@ function checkEmpty(x){
     }
   }
 
-  //if handler has at least one value, e.g. false, return false
-  //if handler has no value return true
   if(handler[0] === false){
     return false;
   }else{
-    return true
+    return true;
+  }
+}
+
+/****
+**
+**Function requires index to be sent after the value
+**Function checks if password matches
+**
+****/
+function clarifyPass(pass,passIndex,clarPass,clarPassIndex){
+  if(pass != clarPass){
+    $('#'+passIndex).addClass('errorInput');
+    $('#'+clarPassIndex).addClass('errorInput');
+    return false;
+  }else{
+    $('.clarPassErr').text('');
+    $('#'+passIndex).removeClass('errorInput');
+    $('#'+clarPassIndex).removeClass('errorInput');
+    return true;
+  }
+}
+
+/****
+**
+**Function checks if email is valid
+**
+****/
+function checkEmail(email,index){
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+  {
+    $('#'+index).removeClass('errorInput');
+    return true;
+  }else{
+    $('#'+index).addClass('errorInput');
+    return false;
   }
 }

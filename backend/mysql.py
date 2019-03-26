@@ -11,7 +11,7 @@ class dataBase:
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
     db.init_app(app)
 
-  def select(self, queryStr):
+  def query(self, queryStr):
     conn = db.connect()
     cursor = conn.cursor()
     cursor.execute(queryStr)
