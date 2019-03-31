@@ -19,12 +19,32 @@ def content():
 @app.route('/login', methods=['POST'])
 def login():
   from backend.user import logUser
+  from backend.validate import valid
 
-  log = logUser(request.form)
-  if log.checkEmpty(log.logUsername, log.logPass):
-    return jsonify(True)
+  vd = valid(request.form)
+  log = logUser()  
+  if vd.checkEmpty(vd.logUsername, vd.logPass):
+
+    return jsonify(db.query("SELECT * FROM user_tbl WHERE username = '{0}' AND password = '{1}'".format(vd.logUsername.strip(),vd.logPass.strip())))
+
   else:
-    return jsonify(False)
+    return jsonify('No Data')
+
+@app.route('register', methods=['POST'])
+def register():
+  from backend.user import logUser
+  from backend.validate import valid
+
+  vd = valid(request.form)
+  log = logUser()
+  if vd.checkEmpty(
+                  vd.regUsername.strip(),
+                  vd.regPassword.strip(),
+                  vd.regPasswordClar.strip(),
+                  vd.regEmail):
+    pass
+  else:
+    pass
 
 @app.errorhandler(404)
 def not_found(e):

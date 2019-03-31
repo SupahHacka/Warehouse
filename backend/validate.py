@@ -10,6 +10,8 @@ class valid:
         return True
       else:
         return False
+  def checkEmail(self,email):
+    pass 
 
 if __name__ == '__main__':
   dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}

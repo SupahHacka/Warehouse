@@ -1,10 +1,9 @@
-from .validate import valid
 from .mysql import dataBase
 
-class logUser(valid,dataBase):
+class logUser(dataBase):
   
-  def __init__(self, dictionary):
-    valid.__init__(dictionary)
+  def __init__(self):
+    pass
 
-  def checkEmpty(self, *args):
-    return super().checkEmpty(args)
+  def login(self,username,password):
+    super().query('SELECT * FROM user_tbl WHERE username = {0} AND password = {1}'.format(username,password))

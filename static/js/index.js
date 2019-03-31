@@ -65,8 +65,18 @@ function register(){
     if(clarifyPass($('#regPassword').val(),'regPassword',$('#regPasswordClar').val(),'regPasswordClar')){
 
       if(checkEmail($('#regEmail').val(),'regEmail')){
-        
-        
+
+        $.ajax({
+          data: $('#registerFrm').serialize(),
+          type:'POST',
+          url:'/register',
+          success:function(data){
+            console.log(data);
+          },
+          error: function(data){
+            console.log(data);
+          }
+        });
 
       }else{
         $('#regFrmErr').text('Please input a valid email, ex. example@.domain');
