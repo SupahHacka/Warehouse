@@ -39,8 +39,10 @@ $(document).ready(function(){
   
 });
 
+let vd = new validation();
+
 function login(){
-  if(checkEmpty($('#logFrm').serialize())){
+  if(vd.checkEmpty($('#logFrm').serialize())){
     $.ajax({
       data : $('#logFrm').serialize(),
       type : 'POST',
@@ -59,19 +61,40 @@ function login(){
 }
 
 function register(){
+
   $('#regFrmErr').text('');
-  if(checkEmpty($('#registerFrm').serialize())){
+  $('#regFrmErr').removeClass('successOutput');
 
-    if(clarifyPass($('#regPassword').val(),'regPassword',$('#regPasswordClar').val(),'regPasswordClar')){
+  if(vd.checkEmpty($('#registerFrm').serialize())){
 
-      if(checkEmail($('#regEmail').val(),'regEmail')){
+    if(vd.clarifyPass($('#regPassword').val(),'regPassword',$('#regPasswordClar').val(),'regPasswordClar')){
+
+      if(vd.checkEmail($('#regEmail').val(),'regEmail')){
 
         $.ajax({
           data: $('#registerFrm').serialize(),
           type:'POST',
           url:'/register',
           success:function(data){
-            console.log(data);
+
+            if(data === true){
+
+              $('#regFrmErr').addClass('successOutput');
+              $('#regFrmErr').removeClass('frmErr');
+
+              $('#regFrmErr').text('User Successfully Added!');
+              $('#registerFrm').trigger("reset");
+              setTimeout(function(){
+                console.log('hahah');
+                $('#regFrmErr').text('');
+              },7000);
+
+            }else if(data == 'Exists'){
+              $('#regFrmErr').text('User Exists');
+            }else{
+              console.log(data);
+            }
+
           },
           error: function(data){
             console.log(data);

@@ -13,7 +13,7 @@ def index():
 
 @app.route('/cms')
 def content():
-  res = db.query('SELECT cms_txt FROM cms_tbl')
+  res = db.select('SELECT cms_txt FROM cms_tbl')
   return jsonify(res)
 
 @app.route('/login', methods=['POST'])
@@ -22,29 +22,38 @@ def login():
   from backend.validate import valid
 
   vd = valid(request.form)
-  log = logUser()  
+  log = logUser()
+  char = vd.logUsername
   if vd.checkEmpty(vd.logUsername, vd.logPass):
 
-    return jsonify(db.query("SELECT * FROM user_tbl WHERE username = '{0}' AND password = '{1}'".format(vd.logUsername.strip(),vd.logPass.strip())))
+    pass
+    #return jsonify(log.login('SELECT * FROM user_tbl WHERE username = "{0}" AND password ="{1}"'.format(vd.logUsername,vd.logPass)))
 
   else:
     return jsonify('No Data')
 
-@app.route('register', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register():
   from backend.user import logUser
   from backend.validate import valid
 
   vd = valid(request.form)
-  log = logUser()
   if vd.checkEmpty(
-                  vd.regUsername.strip(),
-                  vd.regPassword.strip(),
-                  vd.regPasswordClar.strip(),
+                  vd.regUsername,
+                  vd.regPassword,
                   vd.regEmail):
-    pass
+    
+    if vd.checkEmail(vd.regEmail):
+
+      log = logUser(vd.regUsername,vd.regPassword,vd.regEmail,'1')      
+      return jsonify(log.addUser())
+
+    else:
+
+      return jsonify('Bad Email')
+
   else:
-    pass
+    return jsonify('No Data')
 
 @app.errorhandler(404)
 def not_found(e):

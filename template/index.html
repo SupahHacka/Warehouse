@@ -8,7 +8,7 @@
     <title>Thesis Generator!</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename=css/bootstrap-4_3_1.css) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap_4_3_1.css') }}">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -33,6 +33,11 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+    <!-- API JS FILES -->
+
+    <!-- Must be included after script.js -->
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 
   </head>
 
@@ -88,6 +93,9 @@
   </body>
 
 </html>
+
+
+<!-------- Modals for index.html -------->
 
 <!-- Modal to register modal -->
 <div class="modal" tabindex="-1" role="dialog" id = 'registerModal'>

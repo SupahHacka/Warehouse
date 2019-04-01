@@ -4,18 +4,20 @@ db = MySQL()
 
 class dataBase:
 
-  def __init__(self,app):
-    app.config['MYSQL_DATABASE_USER'] = 'root'
-    app.config['MYSQL_DATABASE_PASSWORD'] = 'Mysql_Clarification_77'
-    app.config['MYSQL_DATABASE_DB'] = 'wareHouse'
-    app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-    db.init_app(app)
+    db = db
 
-  def query(self, queryStr):
-    conn = db.connect()
-    cursor = conn.cursor()
-    cursor.execute(queryStr)
+    def __init__(self,app):
+        app.config['MYSQL_DATABASE_USER'] = 'root'
+        app.config['MYSQL_DATABASE_PASSWORD'] = 'Mysql_Clarification_77'
+        app.config['MYSQL_DATABASE_DB'] = 'wareHouse'
+        app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+        db.init_app(app)
 
-    data = cursor.fetchall()
+    def select(self, queryStr):
+        conn = db.connect()
+        cursor = conn.cursor()
+        cursor.execute(queryStr)
 
-    return data
+        data = cursor.fetchall()
+
+        return data
